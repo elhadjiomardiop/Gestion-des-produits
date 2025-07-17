@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use App\Http\Requests\ProductRequest;
 use App\Models\Product;
 use App\Models\Category;
@@ -11,6 +12,8 @@ use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
+    use AuthorizesRequests;
+    
     public function index(Request $request)
     {
         $query = Auth::user()->products()->with('category');
